@@ -22,167 +22,100 @@
 
 <div id="visdown-input">
 
-# may the chart be with you
+# Veggie Delite
 
-simple data visualisation for info viz 1
+    # Plotting Number of Notes vs Value of Money
+
+    The first table works with three axis:
+    1. X Axis:       Plots the year.
+    2. Y Axis Left:  Plots the number of notes in 'millions'.
+    3. Y Axis Right: Plots the amount of money (value of notes X number of notes) in 'billions'.
+
+    The chart comprises of three layers:
+    1. Bar Chart:    Plotting the amount of money.
+    2. Line Chart:   Plotting the number of notes.
+    3. Scatter Plot: Again, plotting the number of notes; this is a repeat of the above line chart.
+                     As the colour of the line chart merges with the colour of the bar chart,
+                     I decided to add a layer of points in order to increase visibility.
 
 ```vis
+width: 900
+height: 600
 data:
   url: data/notes.csv
-
-mark: line
-encoding:
-  x:
-    field: year
-    type: nominal
-  y:
-    field: money
-    type: Q
-    scale:
-     type: linear
-  color:
-    field: value
-    type: nominal
-    scale:
-     scheme: category20b
-
-```
-
-```vis
-data:
-  url: data/notes.csv
-
-mark: circle
-encoding:
-  x:
-    field: year
-    type: nominal
-  y:
-    field: money
-    type: Q
-    scale:
-     type: linear
-  color:
-    field: value
-    type: nominal
-    scale:
-     scheme: category20b
-
-```
- #OR
-```vis
-data:
-    url: data/notes.csv
-height: 400
-width: 700
-transform:
-- filter: (datum.denom == 500) || (datum.year > 2010)
-mark: line
-encoding:
+layer:
+- mark: bar
+  encoding:
     x:
      field: year
-     type: nominal
+     type: N
+     scale:
+      paddingInner: 0.7
+      paddingOuter: 0.5
     y:
-     field: money
+     field: number
      type: Q
+     axis:
+      grid: false
+      orient: left
     color:
      field: denom
      type: N
-```
-#AND
-```vis
-data:
-    url: data/notes.csv
-height: 400
-width: 700
-transform:
-- filter: (datum.denom == 500) && (datum.year > 2010)
-mark: line
-encoding:
+- mark: line
+  encoding:
     x:
      field: year
-     type: nominal
+     type: N
     y:
+     scale:
+      type: sqrt
      field: money
      type: Q
+     axis:
+      grid: false
+      orient: right
     color:
      field: denom
      type: N
-```
-
-
-#CALCULATE
-
-```vis
-width: 600
-data:
-   url: data/notes.csv
-transform:
-   - filter: (datum.denom == 500)
-   - bin: true
-     field: year
-     as: yearBin
-mark: bar
-encoding:
-   x:
-    field: yearBin
-    type: N
-   y:
-    field: money
-    type: Q
-   color:
-    field: denom
-    type: N
-```
-
-
-    #AGGREGATE
-
-```vis
-height: 400
-width: 700
-data:
-    url: data/notes.csv
-transform:
-- filter: datum.money > 0
-mark: point
-encoding:
+- mark: circle
+  encoding:
     x:
      field: year
-     type: nominal
+     type: N
     y:
-     field: money
-     aggregate: sum
-     type: Q
      scale:
-      type: log
+      type: sqrt
+     field: denomination
+     type: Q
+     axis:
+      grid: false
+      orient: right
+resolve:
+  scale:
+   y: independent
 ```
 
-    #AGGREGATE 2
+    ## Eliminating one note from the monetary supply
+
+    Trying to figure out the long run impact of one denomination of money
 
 ```vis
-height: 400
-width: 700
+width: 900
+height: 600
 data:
-    url: data/notes.csv
+  url: data/notes.csv
 transform:
-- filter: datum.money > 0
-mark: point
-encoding:
+- filter: datum.denom == 100
+layer:
+- mark: area
+  encoding:
     x:
      field: year
-     type: nominal
+     type: N
     y:
      field: money
-     aggregate: count
      type: Q
-     scale:
-      type: log
 ```
-
-
-
-
 
 </div>
 <div id="visdown-output"></div>
