@@ -20,7 +20,6 @@
 </head>
 <body>
 
-{background-color:#E0FFF}
 <div id="visdown-input">
 
 <h1 style="font-family:name;color:#E0FFFF;text-left">
@@ -28,19 +27,13 @@
 
 # Veggie Delite
 
-    # Plotting Number of Notes as compared to the value of money
-
-    The first table works with three axis:
-    1. X Axis:       Plots the year.
-    2. Y Axis Left:  Plots the number of notes in 'millions'.
-    3. Y Axis Right: Plots the amount of money (value of notes X number of notes) in 'billions'.
-
-    The chart comprises of three layers:
-    1. Bar Chart:    Plotting the amount of money.
-    2. Line Chart:   Plotting the number of notes.
-    3. Scatter Plot: Again, plotting the number of notes; this is a repeat of the above line chart.
-                     As the colour of the line chart merges with the colour of the bar chart,
-                     I decided to add a layer of points in order to increase visibility.
+    # In economics, the money supply (or money stock) is the total amount of
+    monetary assets available in an economy at a specific time.
+    Having those two sets of data on one graph is extremely helpful to picking
+    out patterns and identifying full-funnel trends.The chart comprises of three layers:
+    1. Bar Chart:    Plotting the total amount of money in the economy.
+    2. Line Chart:   Plotting the total number of notes.
+    3. Scatter Plot: Again, plotting the number of notes
 
 ```vis
 width: 900
@@ -79,7 +72,7 @@ layer:
       grid: false
       orient: right
     color:
-     field: denom
+     field: value
      type: N
 - mark: circle
   encoding:
