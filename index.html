@@ -136,18 +136,18 @@ width: 800
 height: 400
 data:
   url: data/notes.csv
-mark: bar
+mark: circle
 encoding:
   x:
-    aggregate: sum
-    field: yield
+    field: value
     type: quantitative
   y:
-    field: variety
-    type: nominal
-  color:
-    field: site
-    type: nominal
+    field: denomination
+    type: quantitative
+  size:
+    field: money
+    type: quantitative
+
 ```
 
 
