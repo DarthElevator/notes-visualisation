@@ -109,39 +109,6 @@ resolve:
    y: independent
 ```
 
-Trying out interactive visualisations
-
-
-```vis
-width: 500
-height: 500
-data:
- url: https://raw.githubusercontent.com/amitkaps/visdown-template/master/data/notes.csv
-transform:
-- filter: datum.year == cylyr_year
-selection:
- cylyr:
-   type: single
-   fields:
-   - year
-   bind:
-     year:
-       input: range
-       min: 1977
-       max: 2015
-       step: 1
-   'on': click
-   resolve: global
-mark: line
-encoding:
- x:
-   type: nominal
-   field: denom
- y:
-   aggregate: sum
-   type: quantitative
-   field: number
-```
 
 
 </div>
