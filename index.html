@@ -109,6 +109,27 @@ resolve:
    y: independent
 ```
 
+ Trying to figure out the contribution of hundred rupees to the amount of money
+ in the system over time.
+
+
+```vis
+width: 900
+height: 400
+data:
+  url: data/notes.csv
+transform:
+- filter: datum.denom == 100
+layer:
+- mark: area
+  encoding:
+    x:
+     field: year
+     type: N
+    y:
+     field: money
+     type: Q
+```
 
 
 </div>
