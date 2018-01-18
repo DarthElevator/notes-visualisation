@@ -37,6 +37,11 @@
 
 # Money Monster and the number of notes
 
+
+Some unsolved questions due to lack of data that would be interesting to solve
+1) During demonetisation did the relative value of 100 rs notes increase?
+2) Did the introduction of 2000 rupee notes have an impact on high volume transactions?
+
    What happens when there is too much money and too little goods? Inflation. In
    regard examining money supply is critical.In economics, the money supply
    (or money stock) is the total amount of monetary assets available in an
@@ -104,26 +109,45 @@ resolve:
    y: independent
 ```
 
-    Eliminating one note from the monetary supply.
-    Trying to figure out the long run impact of one denomination of money
+
+
+SAYANI SINHA
+
+
+
+SAYANI SINHA (sayani_s@nid.edu, sayani_s@nid.edu, sayanisinhanift@gmail.com)
+# Interactive Diagrame
 
 ```vis
-width: 900
-height: 600
+width: 500
+height: 500
 data:
-  url: data/notes.csv
+ url: https://raw.githubusercontent.com/amitkaps/visdown-template/master/data/notes.csv
 transform:
-- filter: datum.denom == 100
-layer:
-- mark: area
-  encoding:
-    x:
-     field: year
-     type: N
-    y:
-     field: money
-     type: Q
-```
+- filter: datum.year == cylyr_year
+selection:
+ cylyr:
+   type: single
+   fields:
+   - year
+   bind:
+     year:
+       input: range
+       min: 1977
+       max: 2015
+       step: 1
+   'on': click
+   resolve: global
+mark: line
+encoding:
+ x:
+   type: nominal
+   field: denom
+ y:
+   aggregate: sum
+   type: quantitative
+   field: number 
+``
 
 </div>
 <div id="visdown-output"></div>
