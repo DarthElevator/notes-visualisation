@@ -131,6 +131,35 @@ layer:
      type: Q
 ```
 
+```vis
+width: 700
+height: 600
+data:
+  url: data/notes.csv
+layer:
+- mark: bar
+  encoding:
+    x:
+      bin: true
+      field: denomination
+      type: quantitative
+      axis:
+    y:
+      aggregate: count
+      type: quantitative
+- mark: rule
+  encoding:
+    x:
+      aggregate: mean
+      field: denomination
+      type: quantitative
+    color:
+      value: red
+    size:
+      value: 5
+``
+
+
 
 </div>
 <div id="visdown-output"></div>
